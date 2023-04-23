@@ -5,12 +5,11 @@
     Finds all devices in Azure Active Directory with "rental" in their device name
     It is intended to be run with Azure Automation
 .NOTES
-	Editor:         Timothy Ransom
+    Editor:         Timothy Ransom
     Version:        1.0.0
     Version Date:   23-APR-2023
-
-     1.0.0 - (23-APR-2023) - Script Created
-
+    
+    1.0.0 - (23-APR-2023) - Script Created
     Requires a System Assigned Managed Identity with the Microsoft Graph Device.ReadWrite.All Permission
 #>
 
