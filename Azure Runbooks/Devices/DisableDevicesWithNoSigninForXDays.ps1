@@ -1,8 +1,8 @@
 <# 
 .SYNOPSIS 
-    Finds all devices in Azure Active Directory that have not signed-in in 90 days
+    Finds all devices in Azure Active Directory that have not signed-in in the specified period of time.
 .DESCRIPTION
-    Finds all devices in Azure Active Directory that have not signed-in in 90 days
+    Finds all devices in Azure Active Directory that have not signed-in in the specified period of time.
     It is intended to be run with Azure Automation
 .NOTES
     Editor:         Timothy Ransom
