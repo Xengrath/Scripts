@@ -10,7 +10,8 @@
     Version Date:   23-APR-2023
     
     1.0.0 - (23-APR-2023) - Script Created
-    
+    1.1.0 - (23-APR-2023) - Update Comments and Write-Output
+
     Requires a System Assigned Managed Identity with the Microsoft Graph Device.ReadWrite.All Permission
 #>
 
@@ -26,14 +27,15 @@ catch {
     return
 }
 
-# Get UTC formatted time from 90 days ago
-$date = (Get-Date (Get-Date).AddDays(-90) -Format u).Replace(' ','T')
+# Get UTC formatted time for the specified period of time
+$DaysSinceLastSignIn = 90
+$Date = (Get-Date (Get-Date).AddDays($DaysSinceLastSignIn) -Format u).Replace(' ','T')
 
-# Retrieve all devices that have "rental" in their device name
+# Retrieve all devices that have not signed-in in the specified period of time
 $devices = Get-MgDevice -All -Filter "ApproximateLastSignInDateTime lt $date" -CountVariable CountVar -ConsistencyLevel eventual
 
 # Output the count of devices returned by the previous command
-Write-Output "Found ($CountVar) devices that have not signed-in in 90 days."
+Write-Output "Found ($CountVar) devices that have not signed-in in $($DaysSinceLastSignIn) days."
 
 # Disable devices in parallel using the ThreadJob module
 if ($CountVar -eq 0) {
